@@ -20,12 +20,16 @@
         fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.json()).then(data => {
             document.getElementById("content2").innerText = data;
         })
-        /* In this third fetch statement, the second .then is required as returning 
-        response.json returns a promise not an object. The reason for this is that 
-        the first then request is asynchronous and is not resolved until the second
-        .then statement.)*/
+        /* In this third fetch statement (and in all of them in fact), the second 
+        .then is required as returning response.json returns a promise not an object. The
+        original fetch command also returns a promise and thus two .this commands are
+        required. The main reason for these promises is that the requests are asynchronous 
+        and may not be resolved in the manner expected)*/
         fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.json()).then(data => {
             document.getElementById("content3").innerText = data.people;
+        })
+        .catch((e) => {
+            console.error("Error: ", e);
         })
     </script>
 </body>
