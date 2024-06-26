@@ -9,9 +9,14 @@
 
 <body>
     <div id="content"></div>
+    <br>
+    <div id="content2"></div>
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.text()).then(data => {
             document.getElementById("content").innerText = data;
+        })
+        fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.json()).then(data => {
+            document.getElementById("content2").innerText = data;
         })
     </script>
 </body>
