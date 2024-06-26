@@ -11,12 +11,21 @@
     <div id="content"></div>
     <br>
     <div id="content2"></div>
+    <br>
+    <div id="content3"></div>
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.text()).then(data => {
             document.getElementById("content").innerText = data;
         })
         fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.json()).then(data => {
             document.getElementById("content2").innerText = data;
+        })
+        /* In this third fetch statement, the second .then is required as returning 
+        response.json returns a promise not an object. The reason for this is that 
+        the first then request is asynchronous and is not resolved until the second
+        .then statement.)*/
+        fetch("https://ci-swapi.herokuapp.com/api/").then(response => response.json()).then(data => {
+            document.getElementById("content3").innerText = data.people;
         })
     </script>
 </body>
